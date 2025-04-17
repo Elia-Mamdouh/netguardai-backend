@@ -15,6 +15,9 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
+// ✅ ADD THIS
+const db = admin.firestore();
+
 // Express Setup
 const app = express();
 app.use(cors());
