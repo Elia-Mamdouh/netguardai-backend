@@ -10,11 +10,11 @@ const fs = require('fs');
 const path = require('path');
 const handlebars = require("handlebars");
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+const raw = JSON.parse(process.env.FIREBASE_CONFIG);
+raw.private_key = raw.private_key.replace(/\\n/g, '\n'); // convert double-escaped \n to real line breaks
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(raw),
 });
-
 // ✅ ADD THIS
 const db = admin.firestore();
 
