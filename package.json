@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@langchain/community": "^0.3.35",
+    "@langchain/core": "^0.3.42",
+    "@langchain/openai": "^0.4.4",
+    "axios": "^1.8.3",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.2.0",
+    "handlebars": "^4.7.8",
+    "langchain": "^0.3.19",
+    "nodemailer": "^6.10.0",
+    "openai": "^4.87.3",
+    "pdfkit": "^0.16.0",
+    "puppeteer": "^24.6.1"
+  }
+}

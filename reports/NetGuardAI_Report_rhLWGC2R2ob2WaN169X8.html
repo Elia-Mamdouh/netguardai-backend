@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetGuardAI Security Report</title>
+
+  <!-- Chart.js for the pie chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px;
+      background-color: #f9fafb;
+      color: #1f2937;
+      margin: 0;
+    }
+    h1, h2, h3 {
+      color: #111827;
+      margin: 0 0 10px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      vertical-align: middle;
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+    }
+    .logo-icon svg {
+      stroke: #fff;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+    .command {
+        background-color: #0f172a;
+        color: #f8fafc;
+        padding: 15px;
+        border-radius: 6px;
+        font-family: monospace;
+        white-space: pre-wrap;
+        /* The key: let the browser automatically size the height. */
+        height: auto;
+        min-height: 0;
+        /* Keep display as block if you like the full-width appearance. */
+        display: block;
+        width: 100%;
+      }           
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .pie-container {
+      width: 300px;
+      margin: auto;
+    }
+    .download-pdf-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    .timestamp {
+      font-size: 0.9rem;
+      color: #6b7280; /* Gray */
+      margin-bottom: 5px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 50px;
+    }
+    .toggle-btn {
+      background: transparent;
+      color: #3b82f6;
+      border: 1px solid #3b82f6;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 10px;
+      font-size: 0.9rem;
+    }
+
+    /* Force highlight.js to keep your dark background */
+.hljs {
+  background: transparent !important;
+}
+
+.command pre code {
+  background: transparent !important;
+  color: #f8fafc !important; /* near-white text */
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header / Logo / Title -->
+  <div class="header-section">
+    <div style="display:inline-block; vertical-align:middle;">
+      <div class="logo-icon">
+        <!-- Your provided SVG -->
+        <svg width="24" height="24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      </div>
+      <h1 style="display:inline-block; vertical-align:middle; margin-left:5px;">
+        NetGuardAI Security Report
+      </h1>
+    </div>
+    <p style="font-size:1.1rem;">
+      Generated for <strong>Elia Mamdouh</strong> – emammamdo@gmail.com<br>
+      On 4/16/2025, 4:43:14 PM
+    </p>
+  </div>
+
+  <!-- Download Button -->
+  <button class="download-pdf-btn" onclick="window.print()">
+    Download as PDF
+  </button>
+
+  <!-- Executive Summary -->
+  <div class="section">
+    <h2>🔎 Executive Summary</h2>
+    <div class="card">
+      <p><strong>Total Questions Asked:</strong> 2</p>
+      <p><strong>Most Used Features:</strong> SSH, VLAN, SNMP</p>
+      <div class="pie-container">
+        <canvas id="featureChart" width="300" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interaction Log -->
+  <div class="section">
+    <h2>📊 Interaction Log</h2>
+      <div class="card">
+
+        <!-- If you store timestamps in interaction.timestamp: -->
+
+        <h3>🟢 User Query:</h3>
+        <p>how to set a hostname with a name of elia</p>
+
+          <h3>
+            📋 Commands:
+            <button class="toggle-btn" onclick="toggleCommands(this)">Hide</button>
+          </h3>
+          <div class="command">
+            <pre><code class="bash">hostname elia</code></pre>
+          </div>
+
+          <h3>💡 Benefits / Impact:</h3>
+          <p>- Setting a hostname can help easily identify the device on the network.
+- It can make it easier to manage multiple devices by giving them unique names.</p>
+
+          <h3>✅ Recommendations:</h3>
+          <p>- Make sure the chosen hostname does not conflict with any other devices on the network.
+- Consider using a naming convention for consistency across all network devices.</p>
+      </div>
+      <div class="card">
+
+        <!-- If you store timestamps in interaction.timestamp: -->
+
+        <h3>🟢 User Query:</h3>
+        <p>Set hostname to netguard, enable SSH access, configure a login banner that says welcome to secure router, and assign IP 192.168.1.1 to interface Gig0/1 on a Cisco router.</p>
+
+          <h3>
+            📋 Commands:
+            <button class="toggle-btn" onclick="toggleCommands(this)">Hide</button>
+          </h3>
+          <div class="command">
+            <pre><code class="bash">configure terminal
+hostname netguard
+
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+exit
+
+banner login ^C
+Welcome to secure router
+^C
+
+interface GigabitEthernet 0/1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit</code></pre>
+          </div>
+
+          <h3>💡 Benefits / Impact:</h3>
+          <p>- Setting a hostname helps in easy identification and management of the router in the network.
+- Enabling SSH access provides secure remote management capabilities.
+- A login banner adds an extra layer of security by notifying unauthorized users that access is restricted.
+- Assigning an IP address to an interface allows for communication with other devices on the network.</p>
+
+          <h3>✅ Recommendations:</h3>
+          <p>- Make sure to configure strong passwords for authentication to enhance security further.
+- Regularly update and monitor the router&#x27;s configuration to address any potential security vulnerabilities.
+- Implement access control lists (ACLs) to control traffic flow and restrict unauthorized access to the router.
+- Consider implementing additional security measures such as port security and encryption protocols to safeguard network data.</p>
+      </div>
+  </div>
+
+  <!-- Footer with version or contact -->
+  <div class="footer">
+    NetGuardAI v1.0.0 – Need help? Contact <strong>support@netguardai.com</strong>
+  </div>
+
+  <script>
+    // Collapsible code blocks
+    function toggleCommands(btn) {
+      const cmdDiv = btn.parentElement.nextElementSibling; 
+      if(cmdDiv.style.display === 'none') {
+        cmdDiv.style.display = 'block';
+        btn.innerText = 'Hide';
+      } else {
+        cmdDiv.style.display = 'none';
+        btn.innerText = 'Show';
+      }
+    }
+
+    // Load chart
+    window.onload = () => {
+      // highlight.js activation
+      hljs.highlightAll();
+
+      // Safe fallback for chart data
+      const setup = 2 || 0;
+      const security = 0 || 0;
+
+      const canvas = document.getElementById('featureChart');
+      if (!canvas) {
+        console.warn("Pie chart canvas not found.");
+        return;
+      }
+
+      const ctx = canvas.getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Setup', 'Security'],
+          datasets: [{
+            data: [setup, security],
+            backgroundColor: ['#3b82f6', '#10b981'],
+            borderColor: ['#3b82f6', '#10b981'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'bottom' },
+            title: {
+              display: true,
+              text: 'Feature Type Distribution'
+            }
+          }
+        }
+      });
+    };
+  </script>
+</body>
+</html>
