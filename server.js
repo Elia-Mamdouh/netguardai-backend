@@ -17,13 +17,13 @@ const handlebars = require("handlebars");
    Firebase Admin SDK  (ENV‑based, no JSON file)
 ─────────────────────────────────────────────────── */
 const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
-serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n"); // fix newlines
+serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
-const db = admin.firestore();   // ← use this everywhere
+const db = admin.firestore(); // ✅ Already correct and safe
 
 /* ──────────────────────────────────────────────────
    Express / OpenAI setup
