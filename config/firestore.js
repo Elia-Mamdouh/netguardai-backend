@@ -3,13 +3,11 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-// Initialize Firestore
-const serviceAccount = require("../serviceAccountKey.json"); // Place your Firebase service account key here
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
 const db = admin.firestore();
-
 module.exports = db;
