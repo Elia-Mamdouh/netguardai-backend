@@ -10,12 +10,10 @@ const fs = require('fs');
 const path = require('path');
 const handlebars = require("handlebars");
 
-// Load Firebase Credentials
-const serviceAccount = require("./firebase-config.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
-const db = admin.firestore();
 
 // Express Setup
 const app = express();
