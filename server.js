@@ -22,8 +22,7 @@ serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
-
-const db = admin.firestore(); // ✅ Already correct and safe
+const db = admin.firestore();
 
 /* ──────────────────────────────────────────────────
    Express / OpenAI setup
