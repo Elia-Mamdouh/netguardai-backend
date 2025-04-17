@@ -185,7 +185,7 @@ app.post("/generate-report", async (req, res) => {
 });
 
 // URL of the Python FAISS microservice
-const FAISS_URL = "http://localhost:8000/query";
+const FAISS_URLconst FAISS_URL = "https://faiss-service.onrender.com/query";
 
 app.post("/signup", async (req, res) => {
     try {
