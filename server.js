@@ -1,32 +1,38 @@
-const express = require("express");
-const axios = require("axios");
-const admin = require("firebase-admin");
-const cors = require("cors");
+/* ──────────────────────────────────────────────────
+   Basic imports
+─────────────────────────────────────────────────── */
+const express    = require("express");
+const axios      = require("axios");
+const admin      = require("firebase-admin");
+const cors       = require("cors");
 require("dotenv").config();
-const OpenAI = require("openai");
-const nodemailer = require('nodemailer');
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path = require('path');
+
+const OpenAI     = require("openai");
+const nodemailer = require("nodemailer");
+const fs         = require("fs");
+const path       = require("path");
 const handlebars = require("handlebars");
 
-const raw = JSON.parse(process.env.FIREBASE_CONFIG);
-raw.private_key = raw.private_key.replace(/\\n/g, '\n'); // convert double-escaped \n to real line breaks
-admin.initializeApp({
-  credential: admin.credential.cert(raw),
-});
-// ✅ ADD THIS
-const db = admin.firestore();
+/* ──────────────────────────────────────────────────
+   Firebase Admin SDK  (ENV‑based, no JSON file)
+─────────────────────────────────────────────────── */
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, "\n"); // fix newlines
 
-// Express Setup
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+
+const db = admin.firestore();   // ← use this everywhere
+
+/* ──────────────────────────────────────────────────
+   Express / OpenAI setup
+─────────────────────────────────────────────────── */
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Load OpenAI API Key
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 function extractCommands(text) {
   // Look for any triple-backtick code block, e.g. ```something```
