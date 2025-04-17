@@ -148,7 +148,7 @@ app.post("/generate-report", async (req, res) => {
     const htmlFilePath = path.join(reportsDir, htmlFileName);
     fs.writeFileSync(htmlFilePath, htmlContent, "utf8");
 
-    const linkUrl = `http://localhost:5000/reports/${htmlFileName}`;
+    const linkUrl = `https://netguardai-backend.onrender.com/reports/${htmlFileName}`;
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
